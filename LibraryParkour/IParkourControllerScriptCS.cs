@@ -45,6 +45,8 @@ public class IParkourControllerScriptCS : ParkourControllerScriptCS
                 if (playerList[i] is IParkourPlayer_GuangTouQiang)
                 {
                     playerGuangTouQiang = playerList[i] as IParkourPlayer_GuangTouQiang;
+                    //取消光头强.
+                    playerGuangTouQiang.gameObject.SetActive(false);
                 }
                 else if (playerList[i] is IParkourPlayer_Xiong2)
                 {
