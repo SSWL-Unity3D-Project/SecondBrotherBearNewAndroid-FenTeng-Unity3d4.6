@@ -6,6 +6,11 @@ public class PlayerAIController : MonoBehaviourIgnoreGui
     public IParkourPlayerController playerController;
     //最小加速度
     public float accelerateMinValue = 0.0f;
+    /// <summary>
+    /// 玩家最小加速度信息记录.
+    /// </summary>
+    [HideInInspector]
+    public float mPlayerAccMinRecord = 0f;
     //碰撞减速
     public float hitDecelerateMaxValue = 0.3f;
     public float hitDecelerateDampRate = 3.0f;

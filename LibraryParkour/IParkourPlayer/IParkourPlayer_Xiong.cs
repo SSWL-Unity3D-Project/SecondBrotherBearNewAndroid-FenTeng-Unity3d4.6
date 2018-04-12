@@ -66,7 +66,8 @@ public class IParkourPlayer_Xiong : IParkourPlayerController
             {
                 playerTurnDirect = PlayerTurnDirect.Turn_Mid;
             }
-            playerAccelerateSign = playerAIControler.accelerateMinValue + InputDevice.Accelerate((int)playerIndex);
+            //playerAccelerateSign = playerAIControler.accelerateMinValue + InputDevice.Accelerate((int)playerIndex);
+            playerAccelerateSign = playerAIControler.mPlayerAccMinRecord + InputDevice.Accelerate((int)playerIndex);
 
             if (InputDevice.ButtonFireDown((int)playerIndex))
             {

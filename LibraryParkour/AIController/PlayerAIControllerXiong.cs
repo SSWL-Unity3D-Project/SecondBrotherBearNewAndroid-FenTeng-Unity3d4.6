@@ -62,6 +62,7 @@ public class PlayerAIControllerXiong : PlayerAIController
     protected override void Start()
     {
         base.Start();
+        mPlayerAccMinRecord = accelerateMinValue;
         playerController.PlayerSystemForceAccelerateCloseEvent += OnForceAccelerateCloseEvent;
         status = XiongStatus.Status_Wait;
         Invoke("DelayToNormal", waitTime);
@@ -76,6 +77,10 @@ public class PlayerAIControllerXiong : PlayerAIController
         status = XiongStatus.Status_Normal;
     }
 
+    /// <summary>
+    /// Ai加速度变化的时间记录信息.
+    /// </summary>
+    float mLastAiAccTime = 0f;
     public override void AIUpdate()
     {
         if (status == XiongStatus.Status_Normal)
@@ -94,7 +99,13 @@ public class PlayerAIControllerXiong : PlayerAIController
             }
             else
             {
-                playerController.playerAccelerateSign = accelerateMinValue;
+                //playerController.playerAccelerateSign = accelerateMinValue;
+                if (Time.time - mLastAiAccTime >= 3f)
+                {
+                    mLastAiAccTime = Time.time;
+                    accelerateMinValue = UnityEngine.Random.Range(-0.05f, 1f);
+                }
+                playerController.playerAccelerateSign = Mathf.MoveTowards(playerController.playerAccelerateSign, accelerateMinValue, Time.deltaTime * 3f);
                 IsSelectTurnDirect = false;
                 playerController.playerTurnDirect = ParkourPlayerController.PlayerTurnDirect.Turn_Mid;
             }
