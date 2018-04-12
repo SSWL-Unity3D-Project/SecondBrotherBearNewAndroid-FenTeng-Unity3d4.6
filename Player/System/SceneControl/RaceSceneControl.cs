@@ -69,6 +69,10 @@ class RaceSceneControl : SceneControl
 
     //记录地图索引 在继续游戏的时候 使用
     private int m_SceneDefineListIndex = 0;
+    /// <summary>
+    /// "等等我"UI.
+    /// </summary>
+    internal GameObject[] m_WaitMeUI = null;
 
     //道具模版工厂
     public SenceObjectModControl m_SenceObjectModControl;
@@ -256,6 +260,7 @@ class RaceSceneControl : SceneControl
         m_ShowEnterJionGame = new GuiPlaneAnimationPlayer[2];
         m_GameCoins = new GuiPlaneAnimationText[2];
         m_GameCoinsDeno = new GuiPlaneAnimationText[2];
+        m_WaitMeUI = new GameObject[2];
 
         m_GameComLogo = GameRoot.uiOrthographicCamera.LoadLanguageResource_UIPrefabs("LOGO.prefab", GameRoot.gameResource).GetComponent<GuiPlaneAnimationPlayer>();
 
@@ -278,7 +283,12 @@ class RaceSceneControl : SceneControl
         m_Remainder = GameRoot.uiOrthographicCamera.LoadLanguageResource_UIPrefabs("MainUI_Remainder.prefab", GameRoot.gameResource).GetComponent<GuiPlaneAnimationTextAdvanced>();
         m_Remainder.gameObject.SetActive(false);
 
-
+        m_WaitMeUI[0] = GameRoot.uiOrthographicCamera.LoadLanguageResource_UIPrefabs("WaitMe_Left.prefab", GameRoot.gameResource);
+        m_WaitMeUI[1] = GameRoot.uiOrthographicCamera.LoadLanguageResource_UIPrefabs("WaitMe_Right.prefab", GameRoot.gameResource);
+        for (int i = 0; i < m_WaitMeUI.Length; i++)
+        {
+            m_WaitMeUI[i].SetActive(false);
+        }
 
         StandbyProcess.UpdateCoinsUI(IParkourPlayer_Xiong.PlayerIndex.Index_P1);
         StandbyProcess.UpdateCoinsUI(IParkourPlayer_Xiong.PlayerIndex.Index_P2);
