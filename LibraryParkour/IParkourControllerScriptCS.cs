@@ -47,6 +47,8 @@ public class IParkourControllerScriptCS : ParkourControllerScriptCS
                     playerGuangTouQiang = playerList[i] as IParkourPlayer_GuangTouQiang;
                     //取消光头强.
                     playerGuangTouQiang.gameObject.SetActive(false);
+                    //忽略关头强的碰撞.
+                    playerList[i].IsIgnore = true;
                 }
                 else if (playerList[i] is IParkourPlayer_Xiong2)
                 {
