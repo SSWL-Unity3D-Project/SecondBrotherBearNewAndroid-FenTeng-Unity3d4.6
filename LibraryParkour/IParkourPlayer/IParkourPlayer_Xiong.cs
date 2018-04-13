@@ -88,6 +88,8 @@ public class IParkourPlayer_Xiong : IParkourPlayerController
             && !((RaceSceneControl)GameRoot.CurrentSceneControl).m_WaitMeUI[(int)playerIndex].activeInHierarchy)
         {
             ((RaceSceneControl)GameRoot.CurrentSceneControl).m_WaitMeUI[(int)playerIndex].SetActive(true);
+            //播放"等等我"语言.
+            SoundEffectPlayer.Play("WaitMe.wav");
         }
 
         if (myTransform.localPosition.x > 0f
