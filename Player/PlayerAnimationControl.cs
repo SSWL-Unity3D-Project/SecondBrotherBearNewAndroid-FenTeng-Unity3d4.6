@@ -253,8 +253,15 @@ public class PlayerAnimationControl : MonoBehaviourIgnoreGui
 
        if (m_IParkourPlayer_Xiong != null && m_IParkourPlayer_Xiong.IsInputController)
        {
-           float accVal = InputDevice.Accelerate((int)m_IParkourPlayer_Xiong.playerIndex);
-            m_AnimationControl[PlayerAniType.X_PlayerRun.ToString()].speed = 1f + accVal;
+            float accVal = InputDevice.Accelerate((int)m_IParkourPlayer_Xiong.playerIndex);
+            if (accVal <= 0.3f)
+            {
+                m_AnimationControl[PlayerAniType.X_PlayerRun.ToString()].speed = 0f;
+            }
+            else
+            {
+                m_AnimationControl[PlayerAniType.X_PlayerRun.ToString()].speed = 1f + accVal;
+            }
        }
     }
 

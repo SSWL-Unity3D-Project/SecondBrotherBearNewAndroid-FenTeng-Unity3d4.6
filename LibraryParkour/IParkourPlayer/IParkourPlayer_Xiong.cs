@@ -71,7 +71,17 @@ public class IParkourPlayer_Xiong : IParkourPlayerController
                 playerTurnDirect = PlayerTurnDirect.Turn_Mid;
             }
             //playerAccelerateSign = playerAIControler.accelerateMinValue + InputDevice.Accelerate((int)playerIndex);
-            playerAccelerateSign = playerAIControler.mPlayerAccMinRecord + InputDevice.Accelerate((int)playerIndex);
+
+            //Debug.Log("acc01 == " + InputDevice.Accelerate(0) + ", acc02 == " + InputDevice.Accelerate(1));
+            if (InputDevice.Accelerate(0) <= 0.1f && InputDevice.Accelerate(1) <= 0.1f)
+            {
+                //两个玩家都不踩脚踏板时,使玩家保持在镜头边缘.
+                playerAccelerateSign = -0.05f;
+            }
+            else
+            {
+                playerAccelerateSign = playerAIControler.mPlayerAccMinRecord + InputDevice.Accelerate((int)playerIndex);
+            }
 
             if (InputDevice.ButtonFireDown((int)playerIndex))
             {
