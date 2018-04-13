@@ -34,6 +34,11 @@ public class PlayerAnimationControl : MonoBehaviourIgnoreGui
     //玩家控制
     internal IParkourPlayerController m_PlayerController = null;
 
+    /// <summary>
+    /// 熊运动控制脚本.
+    /// </summary>
+    public IParkourPlayer_Xiong m_IParkourPlayer_Xiong;
+    
     //玩家动画控制
     public Animation m_AnimationControl;
 
@@ -244,6 +249,12 @@ public class PlayerAnimationControl : MonoBehaviourIgnoreGui
            AnimationParam obj = GetAnimationParam((int)PlayerAniType.X_PlayerRun);
             m_AnimationControl.wrapMode = WrapMode.Loop;
             m_AnimationControl.CrossFade(obj.AnimationName);
+       }
+
+       if (m_IParkourPlayer_Xiong != null && m_IParkourPlayer_Xiong.IsInputController)
+       {
+           float accVal = InputDevice.Accelerate((int)m_IParkourPlayer_Xiong.playerIndex);
+            m_AnimationControl[PlayerAniType.X_PlayerRun.ToString()].speed = 1f + accVal;
        }
     }
 
