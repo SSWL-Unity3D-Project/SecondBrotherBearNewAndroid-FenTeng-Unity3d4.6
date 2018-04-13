@@ -479,6 +479,14 @@ class RaceSceneControl : SceneControl
 
         GameRoot.gameProcessControl.ActivateProcess(typeof(GameContinueProcess));
         m_PlayerScoreControl.gameObject.SetActive(false);
+
+        for (int i = 0; i < 2; i++)
+        {
+            if (((RaceSceneControl)GameRoot.CurrentSceneControl).m_WaitMeUI[i].activeInHierarchy)
+            {
+                ((RaceSceneControl)GameRoot.CurrentSceneControl).m_WaitMeUI[i].SetActive(false);
+            }
+        }
     }
 
     //继续游戏

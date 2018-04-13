@@ -83,18 +83,16 @@ public class IParkourPlayer_Xiong : IParkourPlayerController
                 }
             }
         }
-        
+
         if (myTransform.localPosition.x <= 0f
             && !((RaceSceneControl)GameRoot.CurrentSceneControl).m_WaitMeUI[(int)playerIndex].activeInHierarchy)
         {
-
             ((RaceSceneControl)GameRoot.CurrentSceneControl).m_WaitMeUI[(int)playerIndex].SetActive(true);
         }
 
         if (myTransform.localPosition.x > 0f
             && ((RaceSceneControl)GameRoot.CurrentSceneControl).m_WaitMeUI[(int)playerIndex].activeInHierarchy)
         {
-
             ((RaceSceneControl)GameRoot.CurrentSceneControl).m_WaitMeUI[(int)playerIndex].SetActive(false);
         }
     }
