@@ -103,7 +103,7 @@ public class PlayerAIControllerXiong : PlayerAIController
                 if (Time.time - mLastAiAccTime >= 3f)
                 {
                     mLastAiAccTime = Time.time;
-                    accelerateMinValue = UnityEngine.Random.Range(-0.05f, 1f);
+                    accelerateMinValue = UnityEngine.Random.Range(-0.05f, 0.8f);
                 }
                 playerController.playerAccelerateSign = Mathf.MoveTowards(playerController.playerAccelerateSign, accelerateMinValue, Time.deltaTime * 3f);
                 IsSelectTurnDirect = false;

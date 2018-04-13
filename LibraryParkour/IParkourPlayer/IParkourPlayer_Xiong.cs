@@ -10,6 +10,10 @@ public class IParkourPlayer_Xiong : IParkourPlayerController
         Index_P2 = 1,
     }
     public PlayerIndex playerIndex = PlayerIndex.Index_P1;
+    /// <summary>
+    /// 玩家头顶的排名信息.
+    /// </summary>
+    public GameObject PlayerRankObj;
 
     public override bool IsInputController
     {
