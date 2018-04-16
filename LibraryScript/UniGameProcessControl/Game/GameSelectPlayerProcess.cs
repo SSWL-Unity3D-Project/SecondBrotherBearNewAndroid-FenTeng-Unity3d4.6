@@ -69,6 +69,10 @@ class GameSelectPlayerProcess : UniProcessModalEvent
         //Debug.Log("角色界面初始化完毕");
         ((RaceSceneControl)GameRoot.CurrentSceneControl).m_PlayerScoreControl.gameObject.SetActive(false);
         ((RaceSceneControl)GameRoot.CurrentSceneControl).m_GameComLogo.gameObject.SetActive(false);
+        for (int i = 0; i < 2; i++)
+        {
+            ((RaceSceneControl)GameRoot.CurrentSceneControl).m_WaitMeUI[i].SetActive(false);
+        }
 
         m_Background = GameRoot.uiOrthographicCamera.LoadLanguageResource_UIPrefabs("SelectPlayerBackground.prefab", GameRoot.gameResource).GetComponent<Transform>();
         m_SelectXiongDaControl = GameRoot.uiOrthographicCamera.LoadLanguageResource_UIPrefabs("SelecetXiongDa.prefab", GameRoot.gameResource).GetComponent<SelectBearControl>();
